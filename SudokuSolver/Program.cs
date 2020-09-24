@@ -1,8 +1,5 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using SudokuSolver.Models;
 
@@ -153,90 +150,6 @@ namespace SudokuSolver
                     lastMessage = "Invalid option";
 
                 UpdateLastMessage(lastMessage);
-            }
-        }
-
-        
-
-        /// <summary>
-        /// Returns the option number inputted by the user
-        /// </summary>
-        /// <returns>Option number. -2=NotANumber</returns>
-        private static int GetOption()
-        {
-            Console.SetCursorPosition(10, 19);
-            string input = Console.ReadLine();
-
-            if (int.TryParse(input, out int result))
-                return result;
-            else
-                return -2;
-        }
-
-        private static void PrintBoardOptions(List<SudokuBoard> boards, string lastMessage)
-        {
-            //Console.Clear();
-            Console.SetCursorPosition(0, 0);
-            Console.Write(String.Join(
-                Environment.NewLine,
-                "**************************************************",
-                "* Loaded boards                                  *",
-                "**************************************************",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "*                                                *",
-                "**************************************************",
-                "* Option:                                        *",
-                "* Log:                                           *",
-                "**************************************************"
-            ));
-
-            // Print sudoku boards labels
-            int i = 3;
-            foreach(SudokuBoard b in boards)
-            {
-                Console.SetCursorPosition(2, i);
-                Console.Write($"[{(i++) - 2,2}] { b.Label }");
-            }
-
-            // Print exit option
-            Console.SetCursorPosition(2, 16);
-            Console.Write("[-1] Quit");
-
-            // Print load option
-            Console.SetCursorPosition(2, 17);
-            Console.Write("[ 0] Load new board");
-
-            // Print last message
-            UpdateLastMessage(lastMessage);
-        }
-
-        private static void UpdateLastMessage(string lastMessage)
-        {
-            Console.SetCursorPosition(8, 20);
-            Console.Write(lastMessage);
-        }
-
-        private static void ClearWorkSpace()
-        {
-            Console.SetCursorPosition(0, 22);
-            for(int r = 0; r < 50; r++)
-            {
-                for(int c = 0; c < 50; c++)
-                    Console.Write(' ');
-                Console.WriteLine();
             }
         }
 
