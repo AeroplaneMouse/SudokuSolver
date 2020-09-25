@@ -14,7 +14,7 @@ namespace SudokuSolver.UI
         void Start();
         void Stop();
         int GetOption();
-        SudokuBoard GetBoard();
+        SudokuBoard GetBoard(int nRows, int nCols);
 
         void DisplayBoardFancy(SudokuBoard board);
         void DisplayBoardSimple(SudokuBoard board);

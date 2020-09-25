@@ -121,7 +121,12 @@ namespace SudokuSolver.UI
             }
         }
 
-        public void DisplayBoardFancy()
+        public void DisplayBoardFancy(SudokuBoard board)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DisplayStats(Solver s)
         {
             throw new NotImplementedException();
         }
