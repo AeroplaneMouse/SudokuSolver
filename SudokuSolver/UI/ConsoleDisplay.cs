@@ -69,9 +69,39 @@ namespace SudokuSolver.UI
         /// Requests the user to enter a new board and returns the new board.
         /// </summary>
         /// <returns>New board received from the user.</returns>
-        public SudokuBoard GetBoard()
+        public SudokuBoard GetBoard(int nRows, int nCols)
         {
-            throw new NotImplementedException();
+            int[,] board = new int[nRows, nCols];
+
+            // Each line is a row in the board
+            for (int row = 0; row < nRows; row++)
+            {
+                // Each char in the input string, is a number in the current row
+                int col = 0;
+                string input = Console.ReadLine();
+                foreach (char c in input)
+                {
+                    int num = c;
+                    // If the input char is '.', make it zero.
+                    if (c == '.')
+                        num = '0';
+                    // Convert from char number to integer
+                    num -= '0';
+
+                    // Return if input is not a number
+                    if (num < 0 || num > 9)
+                        return null;
+
+                    // Save in number in the board
+                    board[row, col] = num;
+                    col++;
+                }
+            }
+
+            Console.WriteLine("Done. Enter a label for the board:");
+            string label = Console.ReadLine();
+
+            return new SudokuBoard(nRows, nCols, board, label);
         }
 
         public void DisplayBoardSimple(SudokuBoard board)
@@ -85,12 +115,15 @@ namespace SudokuSolver.UI
             {
                 for (p.Col = 0; p.Col < board.nCols; p.Col++)
                     output += board.GetNumber(p).ToString();
-                
-                // Write output
-                Console.Write($"{0,:s}", output)
-            }
 
-            Console.Write(output);
+                // Write output
+                Console.Write($"{0,-LIST_WIDTH:s}", output);
+            }
+        }
+
+        public void DisplayBoardFancy()
+        {
+            throw new NotImplementedException();
         }
 
         void WriteBoardList(List<SudokuBoard> boards)
